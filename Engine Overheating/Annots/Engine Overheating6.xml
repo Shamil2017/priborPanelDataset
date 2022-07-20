@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Engine Overheating</folder>
+	<filename>Engine Overheating6.jpeg</filename>
+	<path>C:\Выборка\Engine Overheating\Engine Overheating6.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>1860</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Engine Overheating6</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1957</xmin>
+			<ymin>1165</ymin>
+			<xmax>2029</xmax>
+			<ymax>1230</ymax>
+		</bndbox>
+	</object>
+</annotation>

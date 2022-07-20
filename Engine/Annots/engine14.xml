@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Engine</folder>
+	<filename>engine14.jpeg</filename>
+	<path>C:\Выборка\Engine\engine14.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>1860</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>engine14</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1793</xmin>
+			<ymin>1085</ymin>
+			<xmax>1913</xmax>
+			<ymax>1174</ymax>
+		</bndbox>
+	</object>
+</annotation>

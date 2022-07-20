@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Oil</folder>
+	<filename>oil26.jpeg</filename>
+	<path>C:\Выборка\Oil\oil26.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1860</width>
+		<height>2516</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>oil26</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>901</xmin>
+			<ymin>1581</ymin>
+			<xmax>992</xmax>
+			<ymax>1632</ymax>
+		</bndbox>
+	</object>
+</annotation>

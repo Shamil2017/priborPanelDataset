@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Diesel</folder>
+	<filename>diesel13.jpeg</filename>
+	<path>C:\Выборка\Diesel\diesel13.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>1860</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diesel13</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1379</xmin>
+			<ymin>1022</ymin>
+			<xmax>1445</xmax>
+			<ymax>1108</ymax>
+		</bndbox>
+	</object>
+</annotation>

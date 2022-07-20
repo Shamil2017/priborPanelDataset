@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Diesel</folder>
+	<filename>diesel9.jpeg</filename>
+	<path>C:\Выборка\Diesel\diesel9.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>1860</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>diesel9</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>2059</xmin>
+			<ymin>971</ymin>
+			<xmax>2153</xmax>
+			<ymax>1108</ymax>
+		</bndbox>
+	</object>
+</annotation>
