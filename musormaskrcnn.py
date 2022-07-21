@@ -135,8 +135,30 @@ boxes, w, h = extract_boxes('priborPanelDataset/Accomulator/Annots/accumulator1.
 # summarize extracted details
 print(boxes, w, h)
 
+filename = 'accumulator21.xml'
+print(filename[11:-4])
+
+dataset_dir = 'priborPanelDataset/Accomulator'
+        is_train = False
+        images_dir = dataset_dir + '/Images/'
+        
+        annotations_dir = dataset_dir + '/Annots/'
+        # find all images
+        for filename in os.listdir(images_dir):
+            # extract image id
+            image_id = filename[11:-5]
+            print(image_id)
+            # skip all images after 20 if we are building the train set
+            #if is_train and int(image_id) >= 20:
+            #    continue
+            # skip all images before 20 if we are building the test/val set
+            #if not is_train and int(image_id) < 20:
+            #    continue
+            #img_path = images_dir + filename
+            #ann_path = annotations_dir + 'accumulator'+image_id + '.xml'
+
 # class that defines and loads the kangaroo dataset
-class KangarooDataset(Dataset):
+class MusorDataset(Dataset):
     # load the dataset definitions
     def load_dataset(self, dataset_dir, is_train=True):
         # define  classes
@@ -148,23 +170,22 @@ class KangarooDataset(Dataset):
         #self.add_class("dataset", 6, "Oil")
 
         # define data locations
-        images_dir = dataset_dir + '/images/'
-        annotations_dir = dataset_dir + '/annots/'
+        images_dir = dataset_dir + '/Images/'
+        
+        annotations_dir = dataset_dir + '/Annots/'
         # find all images
         for filename in os.listdir(images_dir):
             # extract image id
-            image_id = filename[:-4]
-            # skip bad images
-            if image_id in ['00090']:
+            image_id = filename[11:-5]
+           
+            # skip all images after 20 if we are building the train set
+            if is_train and int(image_id) >= 20:
                 continue
-            # skip all images after 150 if we are building the train set
-            if is_train and int(image_id) >= 150:
-                continue
-            # skip all images before 150 if we are building the test/val set
-            if not is_train and int(image_id) < 150:
+            # skip all images before 20 if we are building the test/val set
+            if not is_train and int(image_id) < 20:
                 continue
             img_path = images_dir + filename
-            ann_path = annotations_dir + image_id + '.xml'
+            ann_path = annotations_dir + 'accumulator'+image_id + '.xml'
             # add to dataset
             self.add_image('dataset', image_id=image_id, path=img_path, annotation=ann_path)
 
@@ -205,7 +226,7 @@ class KangarooDataset(Dataset):
             row_s, row_e = box[1], box[3]
             col_s, col_e = box[0], box[2]
             masks[row_s:row_e, col_s:col_e, i] = 1
-            class_ids.append(self.class_names.index('kangaroo'))
+            class_ids.append(self.class_names.index('Accomulator'))
         return masks, np.asarray(class_ids, dtype='int32')
 
     # load an image reference
@@ -214,13 +235,13 @@ class KangarooDataset(Dataset):
         return info['path']
 
 # train set
-train_set = KangarooDataset()
-train_set.load_dataset('kangaroo', is_train=True)
+train_set = MusorDataset()
+train_set.load_dataset('priborPanelDataset/Accomulator', is_train=True)
 train_set.prepare()
 print('Train: %d' % len(train_set.image_ids))
 # test/val set
-test_set = KangarooDataset()
-test_set.load_dataset('kangaroo', is_train=False)
+test_set = MusorDataset()
+test_set.load_dataset('priborPanelDataset/Accomulator', is_train=False)
 test_set.prepare()
 print('Test: %d' % len(test_set.image_ids))
 
@@ -254,15 +275,15 @@ for i in range(9):
 plt.show()
 
 # define a configuration for the model
-class KangarooConfig(Config):
+class MusorConfig(Config):
     # Give the configuration a recognizable name
-    NAME = "kangaroo_cfg"
+    NAME = "Musor_cfg"
     # Number of classes (background + kangaroo)
     NUM_CLASSES = 1 + 1
     # Number of training steps per epoch
     STEPS_PER_EPOCH = 131
 # prepare config
-config = KangarooConfig()
+config = MusorConfig()
 
 # define the model
 model = MaskRCNN(mode='training', model_dir='./', config=config)
@@ -272,8 +293,6 @@ model = MaskRCNN(mode='training', model_dir='./', config=config)
 # load weights (mscoco)
 model.load_weights("mask_rcnn_coco.h5", by_name=True, exclude=['mrcnn_class_logits','mrcnn_bbox_fc', 'mrcnn_bbox', 'mrcnn_mask'])
 
-
-
 # train weights (output layers or 'heads')
 model.train(train_set, test_set, learning_rate=config.LEARNING_RATE, epochs=5,
 layers='heads')
@@ -281,7 +300,7 @@ layers='heads')
 # define the prediction configuration
 class PredictionConfig(Config):
     # define the name of the configuration
-    NAME = "kangaroo_cfg"
+    NAME = "Musor_cfg"
     # number of classes (background + kangaroo)
     NUM_CLASSES = 1 + 1
     # simplify GPU config
@@ -293,7 +312,7 @@ cfg = PredictionConfig()
 # define the model
 model = MaskRCNN(mode='inference', model_dir='./', config=cfg)
 
-model_path = 'mask_rcnn_kangaroo_cfg_0005.h5'
+model_path = 'mask_rcnn_musor_cfg_0005.h5'
 model.load_weights(model_path, by_name=True)
 
 # calculate the mAP for a model on a given dataset
@@ -321,13 +340,13 @@ def evaluate_model(dataset, model, cfg):
     return mAP
 
 # load the train dataset
-train_set = KangarooDataset()
-train_set.load_dataset('kangaroo', is_train=True)
+train_set = MusorDataset()
+train_set.load_dataset('priborPanelDataset/Accomulator', is_train=True)
 train_set.prepare()
 print('Train: %d' % len(train_set.image_ids))
 # load the test dataset
-test_set = KangarooDataset()
-test_set.load_dataset('kangaroo', is_train=False)
+test_set = MusorDataset()
+test_set.load_dataset('priborPanelDataset/Accomulator', is_train=False)
 test_set.prepare()
 print('Test: %d' % len(test_set.image_ids))
 # create config
@@ -335,7 +354,7 @@ cfg = PredictionConfig()
 # define the model
 model = MaskRCNN(mode='inference', model_dir='./', config=cfg)
 # load model weights
-model.load_weights('mask_rcnn_kangaroo_cfg_0005.h5', by_name=True)
+model.load_weights('mask_rcnn_musor_cfg_0005.h5', by_name=True)
 # evaluate model on training dataset
 train_mAP = evaluate_model(train_set, model, cfg)
 
@@ -359,7 +378,7 @@ from numpy import expand_dims
 from mrcnn import visualize
 
 # load image
-image = load_img('Kangaroo1.jpg')
+image = load_img('accumulator29.jpeg')
 image = img_to_array(image)
 # convert pixel values (e.g. center)
 scaled_image = mold_image(image, cfg)
@@ -411,7 +430,7 @@ def visualize_detections(image, masks, boxes, class_ids, scores):
         cv2.putText(bgr_image, text, (x1, y1-20), font, size, color, width)
     cv2.imshow(bgr_image)
 
-draw_image_with_boxes('Kangaroo1.jpg', yhat[0]['rois'])
+draw_image_with_boxes('accumulator29.jpeg', yhat[0]['rois'])
 
 visualize.random_colors(2)
 
@@ -472,13 +491,13 @@ def plot_actual_vs_predicted(dataset, model, cfg, n_images=5):
       plt.show()
 
 # load the train dataset
-train_set = KangarooDataset()
-train_set.load_dataset('kangaroo', is_train=True)
+train_set = MusorDataset()
+train_set.load_dataset('priborPanelDataset/Accomulator', is_train=True)
 train_set.prepare()
 print('Train: %d' % len(train_set.image_ids))
 # load the test dataset
-test_set = KangarooDataset()
-test_set.load_dataset('kangaroo', is_train=False)
+test_set = MusorDataset()
+test_set.load_dataset('priborPanelDataset/Accomulator', is_train=False)
 test_set.prepare()
 print('Test: %d' % len(test_set.image_ids))
 # create config
@@ -486,7 +505,7 @@ cfg = PredictionConfig()
 # define the model
 model = MaskRCNN(mode='inference', model_dir='./', config=cfg)
 # load model weights
-model_path = 'mask_rcnn_kangaroo_cfg_0005.h5'
+model_path = 'mask_rcnn_musor_cfg_0005.h5'
 model.load_weights(model_path, by_name=True)
 # plot predictions for train dataset
 plot_actual_vs_predicted(train_set, model, cfg)
