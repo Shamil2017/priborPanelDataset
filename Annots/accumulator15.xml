@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Accumulator</folder>
+	<filename>accumulator15.jpeg</filename>
+	<path>C:\Выборка\Accumulator\accumulator15.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>1860</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>accomulator15</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1518</xmin>
+			<ymin>1049</ymin>
+			<xmax>1677</xmax>
+			<ymax>1158</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Brake</folder>
+	<filename>brake24.jpeg</filename>
+	<path>C:\Выборка\Brake\brake24.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1860</width>
+		<height>2509</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>brake24</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1188</xmin>
+			<ymin>1496</ymin>
+			<xmax>1260</xmax>
+			<ymax>1556</ymax>
+		</bndbox>
+	</object>
+</annotation>
