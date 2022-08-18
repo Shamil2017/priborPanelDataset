@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Oil</folder>
+	<filename>oil18.jpeg</filename>
+	<path>D:\мага\проект панель\Musor_1\Musor\Images\oil18.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>720</width>
+		<height>1280</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>oil</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>349</xmin>
+			<ymin>619</ymin>
+			<xmax>383</xmax>
+			<ymax>639</ymax>
+		</bndbox>
+	</object>
+</annotation>

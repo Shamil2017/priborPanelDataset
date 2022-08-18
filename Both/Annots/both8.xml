@@ -1,0 +1,38 @@
+<annotation>
+	<folder>Both</folder>
+	<filename>both8.jpeg</filename>
+	<path>D:\мага\проект панель\Musor_1\Musor\Both\both8.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>oil</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>538</xmin>
+			<ymin>432</ymin>
+			<xmax>578</xmax>
+			<ymax>458</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>accumulator</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>540</xmin>
+			<ymin>479</ymin>
+			<xmax>577</xmax>
+			<ymax>506</ymax>
+		</bndbox>
+	</object>
+</annotation>

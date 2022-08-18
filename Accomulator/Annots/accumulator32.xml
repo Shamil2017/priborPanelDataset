@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Accumulator</folder>
+	<filename>accumulator32.jpeg</filename>
+	<path>D:\мага\проект панель\Musor_1\Musor\Accumulator\accumulator32.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>720</width>
+		<height>1280</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>accumulator</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>236</xmin>
+			<ymin>578</ymin>
+			<xmax>261</xmax>
+			<ymax>612</ymax>
+		</bndbox>
+	</object>
+</annotation>
